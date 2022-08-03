@@ -1,6 +1,8 @@
 ﻿"use strict";
 
-var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+var connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .build();
 
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
@@ -12,6 +14,12 @@ connection.on("ReceiveMessage", function (user, message) {
     // is not interpreted as markup. If you're assigning in any other way, you 
     // should be aware of possible script injection concerns.
     li.textContent = `${user} says ${message}`;
+});
+
+connection.on("ReceiveSerializedMessage", function (messageSerialized) {
+    var li = document.createElement("li");
+    document.getElementById("messagesList").appendChild(li);
+    li.textContent = `${messageSerialized}`;
 });
 
 connection.start().then(function () {
