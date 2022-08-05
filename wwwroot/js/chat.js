@@ -2,6 +2,7 @@
 
 var connection = new signalR.HubConnectionBuilder()
     .withUrl("/chatHub")
+    .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())
     .build();
 
 //Disable the send button until connection is established.
@@ -16,10 +17,10 @@ connection.on("ReceiveMessage", function (user, message) {
     li.textContent = `${user} says ${message}`;
 });
 
-connection.on("ReceiveSerializedMessage", function (messageSerialized) {
+connection.on("ReceiveSerializedObject", function (dataType, data) {
     var li = document.createElement("li");
     document.getElementById("messagesList").appendChild(li);
-    li.textContent = `${messageSerialized}`;
+    li.textContent = `${dataType}: ${data}`;
 });
 
 connection.start().then(function () {
