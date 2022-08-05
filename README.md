@@ -13,7 +13,7 @@ SignalR Chat app with MessagePack serialization
 
 These tabs are like a chat instances, which can send messages, and each will receive the messages from all other 'chat instances'.
 
-## How to see the binary data the browser
+## How to see the binary data in the browser
 - Open developer tools (F12)
 - Open Network tab
 - Refresh the page https://localhost:7276/
@@ -26,10 +26,12 @@ These tabs are like a chat instances, which can send messages, and each will rec
 
 ## How to capture server-client communication with Fiddler Everywhere
 - Open Fiddler Everywhere
+- Make sure Live Traffic is "Paused"
 - Click on 'Open Browser'
-- In the new opened browser instance, paste the address: https://localhost:7276/
+- In the newly opened browser instance, paste the address: https://localhost:7276/
 - A WebSocket tunnel session will appear in the Live Traffic grid. (WebSocket tunnels have Status Code = 101. You can use this to filter the Grid)
+- Send a few messages with the app.
 - All messages from/to this chat instance will be visible in the WebSocket tunnel -> Inspectors -> Messages
-- The Message tab will show the serialized with MessagePack object that was sent from the server.
+- The Message tab will show the serialized with MessagePack data that was sent from the server.
 ![image](https://user-images.githubusercontent.com/6852385/183068385-b5e5c9b1-0972-41ef-8424-0f868177188a.png)
 
