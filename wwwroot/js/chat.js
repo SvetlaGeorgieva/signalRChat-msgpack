@@ -2,7 +2,7 @@
 
 var connection = new signalR.HubConnectionBuilder()
     .withUrl("/chatHub")
-    .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())
+    // .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol()) // If you want to turn off MessagePack -> comment this line.
     .build();
 
 //Disable the send button until connection is established.
