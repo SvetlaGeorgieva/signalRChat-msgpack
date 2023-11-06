@@ -13,6 +13,11 @@ SignalR Chat app with MessagePack serialization
 
 These tabs are like a chat instances, which can send messages, and each will receive the messages from all other 'chat instances'.
 
+> ***Note: The project has MessagePack encoding of the messages enabled.***
+If you want to turn off MessagePack -> comment out this line of code:
+`.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` <br>
+Then the messages will be sent as JSON.
+
 ## How to see the binary data in the browser
 - Open developer tools (F12)
 - Open Network tab
